@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Judickaël</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <p> < Judickaël /> </p>
+        <nav>
+            <a href="#" class="nav-link" data-target="apropos">À propos</a>
+            <a href="#" class="nav-link" data-target="projets">Projets</a>
+            <a href="#" class="nav-link" data-target="contact">Contact</a>
+
+        </nav>
+    </header>
+    <section class="J1">
+        <article>
+        <p>Bonjour, je suis</p>
+        <h1>RAVELOMANANTSOA Fenolaza Jean Judickaël</h1>
+        <h3>Développeur web</h3>
+        <p>Je conçois et dévellope des solutions web robuste,
+            sécurisées et modernes. Passionné par la création 
+            de projets innovants de A à Z.
+        </p>
+        </article>
+            <img src="img_judi.png" alt="erruer">
+            
+    </section>
+    <section class="j2" id="apropos">
+        <h1>A propos de moi</h1>
+        <div class="h1j2">
+            <p>Je conçois et développe des interfaces web modernes, 
+                responsives et interactives, en mettant l’accent sur 
+                le design, l’expérience utilisateur et la performance. 
+                Habitué à réaliser des projets de A à Z, je travaille de 
+                la conception et de l’intégration jusqu’au déploiement des solutions web.
+            </p>
+        </div>
+        <div class="jj2">
+            <div class="jjj1">
+                <h2>Competence</h2>
+                <p>Frontend</p>
+                <aside id="asd">
+                <div>Html</div>
+                <div>CSS</div>
+                <div>TypeScript</div>
+                </aside>
+                
+                <p>Outils</p>
+                <aside id="asd">
+                <div>Vercel</div>
+                <div>Git</div>
+                <div>GitHub Actions</div>
+                <div>VS code</div>
+                </aside>
+                <p>Autre</p>
+                <p class="SIG">Spécialiste en SIG et Télédetection</p>
+                <aside id="asd">
+                    <div>ArcGis</div>
+                    <div>QGis</div>
+                </aside>
+            </div>
+            <div class="jj1j2">
+                <h2>Expérience</h2>
+                <ul>
+                <li>Développeur Frontend</li>
+                <p>Conception de sites web modernes et responsifs en utilisant HTML5, 
+                    CSS3 et JavaScript, avec intégration d’animations, de mises en page 
+                    flexibles et d’interfaces adaptées aux différents écrans.</p>
+                <h5></h5>
+                <li>Intégrateur Web</li>
+                <p>Intégration de maquettes et création de pages web responsive, 
+                    en veillant à la qualité du design, à la structure du code et 
+                    à la compatibilité avec les appareils mobiles.
+                </p>
+                <h5></h5>
+                <li>Développeur JavaScript</li>
+                <p>Développement de fonctionnalités interactives avec JavaScript, 
+                    notamment des formulaires, calculatrices, To-Do Lists, quiz et 
+                    autres composants dynamiques pour améliorer l’expérience utilisateur.
+                </p>
+                <h5></h5>
+                <li>Créateur de Portfolio Web</li>
+                <p>Conception et développement d’un portfolio professionnel responsive, 
+                    avec une interface moderne, des animations CSS, une navigation 
+                    intuitive et une présentation structurée des compétences et projets.</p>
+                <h5></h5>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="j4" id="contact">
+        <h1>Me contacter</h1>
+        <div class="jjj4">
+            <div id="kk">
+                <p>Email</p>
+                <p>elckadiju27@gmail.com</p>
+            </div>
+            <div id="kk">
+                <p>WhatsApp : +261 38 07 668 50</p>
+                <p></p>
+                <p>Coordonné : +261 33 55 188 58</p>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="jjj5">
+
+        <div class="contact-header">
+            <h2>Laissez-moi un message</h2>
+            <p>
+                Vous avez un projet ou une question ?
+                N'hésitez pas à me contacter.
+            </p>
+        </div>
+
+        <form id="contact-form">
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="name">Nom</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Votre nom"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="votre@email.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Écrivez votre message..."
+                    rows="7"
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit" id="btn">
+
+                <span id="btn-text">
+                    Envoyer le message
+                </span>
+
+                <span id="loader"></span>
+
+            </button>
+
+            <div id="form-status"></div>
+
+        </form>
+
+    </div>
+
+        </div>
+    </section>
+    <!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- TON JAVASCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>
