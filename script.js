@@ -8,123 +8,141 @@ emailjs.init({
 
 
 // ========================================
-// ELEMENTS
+// DOM ELEMENTS
 // ========================================
 
 const form = document.getElementById("contact-form");
-
 const button = document.getElementById("btn");
-
 const buttonText = document.getElementById("btn-text");
-
+const loader = document.getElementById("loader");
 const statusMessage = document.getElementById("form-status");
 
 
 // ========================================
-// SEND FORM
+// CHECK FORM
 // ========================================
 
-form.addEventListener("submit", function (event) {
+if (!form) {
 
-    event.preventDefault();
+    console.error("❌ Le formulaire #contact-form est introuvable.");
 
+} else {
 
-    // -------------------------------
-    // Loading state
-    // -------------------------------
+    // ========================================
+    // SEND FORM
+    // ========================================
 
-    button.disabled = true;
+    form.addEventListener("submit", async function (event) {
 
-    button.classList.add("loading");
+        event.preventDefault();
 
-    buttonText.textContent = "Envoi en cours...";
+        // ----------------------------------------
+        // Loading
+        // ----------------------------------------
 
-    statusMessage.textContent = "";
+        button.disabled = true;
+        button.classList.add("loading");
 
-    statusMessage.className = "";
+        buttonText.textContent = "Envoi en cours...";
 
+        statusMessage.textContent = "";
+        statusMessage.className = "";
 
-    // -------------------------------
-    // Send with EmailJS
-    // -------------------------------
+        try {
 
-    emailjs.sendForm(
-        "service_v0o5brr",
-        "template_9kx5te8",
-        form
-    )
+            // ----------------------------------------
+            // SEND EMAIL
+            // ----------------------------------------
 
-    .then(function (response) {
+            const response = await emailjs.sendForm(
+                "service_v0o5brr",
+                "template_9kx5te8",
+                form
+            );
 
-        console.log(
-            "Message envoyé avec succès :",
-            response.status,
-            response.text
-        );
+            // ----------------------------------------
+            // SUCCESS
+            // ----------------------------------------
 
+            console.log("EmailJS SUCCESS :", response);
 
-        // Success message
+            statusMessage.textContent =
+                "✓ Votre message a été envoyé avec succès !";
 
-        statusMessage.textContent =
-            "✓ Votre message a été envoyé avec succès !";
+            statusMessage.className = "success";
 
-        statusMessage.className = "success";
+            // Vider le formulaire
+            form.reset();
 
+        } catch (error) {
 
-        // Empty form
+            // ----------------------------------------
+            // ERROR
+            // ----------------------------------------
 
-        form.reset();
+            console.error("❌ EMAILJS ERROR :", error);
 
-    })
+            console.error("Status :", error.status);
+            console.error("Text :", error.text);
 
-    .catch(function (error) {
+            // Afficher la vraie erreur
+            statusMessage.textContent =
+                "✕ Erreur EmailJS : " +
+                (error.text || "Veuillez vérifier votre configuration.");
 
-        console.error(
-            "Erreur EmailJS :",
-            error
-        );
+            statusMessage.className = "error";
 
+        } finally {
 
-        statusMessage.textContent =
-            "✕ Une erreur est survenue. Veuillez réessayer.";
+            // ----------------------------------------
+            // RESTORE BUTTON
+            // ----------------------------------------
 
-        statusMessage.className = "error";
+            button.disabled = false;
 
-    })
+            button.classList.remove("loading");
 
-    .finally(function () {
-
-        // Restore button
-
-        button.disabled = false;
-
-        button.classList.remove("loading");
-
-        buttonText.textContent =
-            "Envoyer le message";
+            buttonText.textContent =
+                "Envoyer le message";
+        }
 
     });
+}
 
-});
 
+// ========================================
+// NAVIGATION
+// ========================================
 
 document.addEventListener("DOMContentLoaded", function () {
 
     const links = document.querySelectorAll(".nav-link");
 
-    links.forEach(link => {
+    links.forEach(function (link) {
 
-        link.addEventListener("click", function (e) {
+        link.addEventListener("click", function (event) {
 
-            e.preventDefault();
+            event.preventDefault();
 
             const targetId = this.dataset.target;
-            const target = document.getElementById(targetId);
 
-            if (!target) return;
+            const target =
+                document.getElementById(targetId);
 
-            const header = document.querySelector("header");
-            const headerHeight = header ? header.offsetHeight : 0;
+            if (!target) {
+                console.warn(
+                    "Section introuvable :",
+                    targetId
+                );
+
+                return;
+            }
+
+            const header =
+                document.querySelector("header");
+
+            const headerHeight =
+                header ? header.offsetHeight : 0;
 
             const targetPosition =
                 target.getBoundingClientRect().top +
