@@ -55,7 +55,7 @@ if (!form) {
             // ----------------------------------------
 
             const response = await emailjs.sendForm(
-                "service_v0o5brr",
+                "service_kzwk34p",
                 "template_9kx5te8",
                 form
             );
